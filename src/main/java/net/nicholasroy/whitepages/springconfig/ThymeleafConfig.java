@@ -11,7 +11,7 @@ import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
-import org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect;
+//import org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 
@@ -46,8 +46,8 @@ public class ThymeleafConfig extends WebMvcConfigurerAdapter implements Applicat
     public SpringTemplateEngine templateEngine(){
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
-        SpringSecurityDialect dialect = new SpringSecurityDialect();
-        templateEngine.addDialect(dialect);
+      /*  SpringSecurityDialect dialect = new SpringSecurityDialect();
+        templateEngine.addDialect(dialect);*/
         return templateEngine;
     }
     

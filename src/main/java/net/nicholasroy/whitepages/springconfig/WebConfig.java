@@ -17,8 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableWebMvc
 @ComponentScan(basePackages= "net.nicholasroy.whitepages.controller")
 @PropertySources(value = {@PropertySource("classpath:/application.properties")})
-//@Import(ThymeleafConfig.class)
-@Import({ThymeleafConfig.class, PersistenceConfig.class})
+@Import(ThymeleafConfig.class)
 public class WebConfig extends WebMvcConfigurerAdapter {
 		
 	@Override
