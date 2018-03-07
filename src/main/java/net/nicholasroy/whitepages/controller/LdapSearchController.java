@@ -18,62 +18,6 @@ import org.springframework.context.annotation.PropertySources;
 
 /**
  * @author nick
- *
- * TODO: Add input validation via regex/JSR 303 validators, add complex search logic, 
- * secure with Spring Security
- * 
- * Add missing attributes to DirectoryPerson class, to prevent throwing stack traces in stdout during reflection in LDAPUtils
- * 
- * Add logging and put catches in log instead of stdout
- * 
- * Figure out how to change logging from DEBUG
- * 
- * Set focus on search field
- * 
- * Clear out search results (session-scoped bean) when an empty search is performed or /ldst is GETed without a uid param
- * 
- * Integrate with Tomcat in Eclipse and figure out how to deploy for debugging
- * 
- * Fix "appears to have started a thread but has failed to stop it" warnings from Tomcat on shutdown of the app
- * 
- * Fix SearchResult java.io.NotSerializableException
- * 
- * Add tests/mocks
- * 
- * Add common UI elements like the search box to template fragments
- * 
- * Create a navigation interface and include as a template fragment
- * 
- * Fix printing of null for null values in interfaces
- * 
- * Clear out session-scoped search result if no results found
- * 
- * Put &nbsp; between admin area and department in ldsr
- * 
- * Use user principal from session and groups from session (via Shibboleth) for custom security controller annotations:
- * @Self - self-service basic level of access (can operate on self only)
- * @Create("create-granting-ldap-group-name")
- * @Read("read-granting-ldap-group-name")
- * @Update("update-granting-ldap-group-name")
- * @Delete("delete-granting-ldap-group-name")
- * 
- * Database connection pooling
- * 
- * SSL/TLS security
- * 
- * log4net logging
- * 
- * Authorities Mapper implementation that maps LDAP groups to roles
- * 
- * Replace authN with Shibboleth SP
- * 
- * Cache UserDetails to prevent repeated LDAP lookups on authentication (for web services authN)
- * 
- * Separate basic authN for web services, separate from forms authN for interfaces
- * 
- * Explore converting from LDAPtive to Spring LDAP
- * 
- * Make UMGs into links which show membership.  On membership view, allow viewing of admins.
  * 
  **/ 
 @Controller

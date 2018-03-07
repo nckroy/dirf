@@ -1,0 +1,4 @@
+application.conf export-ignore
+persistence.xml export-ignore
+application-sample.conf export-ignore
+persistence-sample.xml export-ignore

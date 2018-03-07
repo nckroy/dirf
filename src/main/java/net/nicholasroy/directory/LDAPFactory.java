@@ -23,6 +23,7 @@ import org.ldaptive.pool.SoftLimitConnectionPool;
  * @author nick
  *
  */
+
 public class LDAPFactory {
 
 	private SoftLimitConnectionPool pool;
