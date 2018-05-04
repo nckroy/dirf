@@ -15,7 +15,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.github.ben-manes:gradle-versions-plugin:0.14.0'
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
     classpath 'com.bmuschko:gradle-tomcat-plugin:2.2.5'
   }
 }
@@ -47,5 +47,5 @@ war {
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '3.5'
+	gradleVersion = '4.7'
 }
