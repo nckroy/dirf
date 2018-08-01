@@ -42,11 +42,16 @@ dependencies {
    testCompile("junit:junit:4.12")
 }
 
+tomcat {
+    httpProtocol = 'org.apache.coyote.http11.Http11Nio2Protocol'
+    ajpProtocol  = 'org.apache.coyote.ajp.AjpNio2Protocol'
+}
+
 war {
 	baseName = 'whitepages'
 	version =  '0.3.0'
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '4.7'
+	gradleVersion = '4.9'
 }
