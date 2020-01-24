@@ -210,7 +210,7 @@ public class LDAPFactory {
 			SearchOperation search = new SearchOperation(conn);
 			SearchResult sResult = search.execute(
 					new SearchRequest(
-							"dc=example,dc=com", orFiltersTogether(filters))).getResult();
+							searchBase, orFiltersTogether(filters))).getResult();
 			Collection<LdapEntry> entries = sResult.getEntries();
 			for (LdapEntry entry : entries) {
 				results.add(lDAPInfoFromLDAPEntry(entry));
