@@ -42,10 +42,10 @@ public class LdapSearchController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/ldst")
-	public String ldst(@RequestParam(value="uid", required=false) String uid, Model model) {
-		if((uid != null) && (!(uid.isEmpty()))) {
-			StringBuilder sb = new StringBuilder("(uid=");
-			sb.append(uid + ")");
+	public String ldst(@RequestParam(value="userid", required=false) String userid, Model model) {
+		if((userid != null) && (!(userid.isEmpty()))) {
+			StringBuilder sb = new StringBuilder("(userid=");
+			sb.append(userid + ")");
 			try {
 				ldapInfo=factory.findSingleEntry(sb.toString());
 
@@ -75,8 +75,8 @@ public class LdapSearchController {
 			if(searchResult.getSearchResults().size() == 1)
 			{
 				String sResultUid = null;
-				sResultUid = searchResult.getSearchResults().get(0).getUid();
-				redirectPath = (((sResultUid == null) || sResultUid.isEmpty()) ? "redirect:/ldst" : "redirect:/ldst?uid=" + sResultUid);
+				sResultUid = searchResult.getSearchResults().get(0).getUserid();
+				redirectPath = (((sResultUid == null) || sResultUid.isEmpty()) ? "redirect:/ldst" : "redirect:/ldst?userid=" + sResultUid);
 			}
 			else if (searchResult.getSearchResults().size() > 1 ) {
 				redirectPath = "redirect:/ldsr";

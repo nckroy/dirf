@@ -189,8 +189,8 @@ public class LDAPFactory {
 			// Make some assumptions about what the value is.
 
 
-			// uid / Access ID attribute is included in this search filter.
-			filters.add("(|(uid=" + name1 + ")(sn=" + name1 + "))");
+			// userid attribute is included in this search filter.
+			filters.add("(|(userid=" + name1 + ")(sn=" + name1 + "))");
 
 			// Filter to include a mail alias search.
 			filters.add("(mail=" + name1 + ")");
@@ -206,10 +206,11 @@ public class LDAPFactory {
 
 		try {
 			// connection is already open, perform an operation
+			// TODO!!!! Un-hard-wire search base! Replace with searchBase
 			SearchOperation search = new SearchOperation(conn);
 			SearchResult sResult = search.execute(
 					new SearchRequest(
-							"dc=psu,dc=edu", orFiltersTogether(filters))).getResult();
+							"dc=example,dc=com", orFiltersTogether(filters))).getResult();
 			Collection<LdapEntry> entries = sResult.getEntries();
 			for (LdapEntry entry : entries) {
 				results.add(lDAPInfoFromLDAPEntry(entry));

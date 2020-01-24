@@ -5,100 +5,33 @@ package net.nicholasroy.directory;
  *
  */
 public class DirectoryPerson {
-	private String uid;
+	private String userid;
 	private String eduPersonPrincipalName;
 	private String eduPersonAffiliation;
 	private String eduPersonPrimaryAffiliation;
-	private String psMacLabHomeDir;
 	private String givenName;
 	private String eduPersonNickname;
 	private String title;
-	private String psMemberOf;
-	private String psCampus;
-	private String psMacLabGID;
 	private String objectclass;
-	private String psmailhost;
 	private String mail;
 	private String sn;
-	private String psOfficePhone;
-	private String psOfficeAddress;
 	private String uidNumber;
-	private String psmailbox;
-	private String psUidNumber;
 	private String loginShell;
 	private String homeDirectory;
-	private String psDepartment;
-	private String psMailID;
 	private String cn;
 	private String telephoneNumber;
-	private String psDirIDN;
 	private String gidNumber;
 	private String postalAddress;
 	private String displayName;
-	private String psAdminArea;
-	private String psMailbox;
-	private String psMailHost;
-	private String psCurriculum;
 	private String labeledURI;
 	private String objectClass;
 	private String GIDNumber;
-	private String PsUIDNumber;
 	private String Mobile;
-	private String PsOtherInfo;
-	private String PsColleges;
-	private String PsHighSchool;
 	private String Pager;
 	private String Fax;
-	private String PsOfficeLocation;
-	private String PsBirthday;
-	private String PsChatName;
-	private String PsTeaching;
-	private String PsCountries;
-	private String PsLanguages;
 	private String HomePhone;
-	private String PsHours;
 	private String HomePostalAddress;
-	private String PsPermanentPhone;
-	private String PsPermanentAddress;
-	private String PsFERPAExam;
 	private String FacsimileTelephoneNumber;
-	private String PsProject;
-
-	public String getPsResearch() {
-		return PsResearch;
-	}
-
-	public void setPsResearch(String psResearch) {
-		PsResearch = psResearch;
-	}
-
-	private String PsResearch;
-
-	public String getPsCallsign() {
-		return PsCallsign;
-	}
-
-	public void setPsCallsign(String psCallsign) {
-		PsCallsign = psCallsign;
-	}
-
-	public String getPsProject() {
-		return PsProject;
-	}
-
-	public void setPsProject(String psProject) {
-		PsProject = psProject;
-	}
-
-	private String PsCallsign;
-
-	public String getPsFERPAExam() {
-		return PsFERPAExam;
-	}
-
-	public void setPsFERPAExam(String psFERPAExam) {
-		PsFERPAExam = psFERPAExam;
-	}
 
 	public String getFacsimileTelephoneNumber() {
 		return FacsimileTelephoneNumber;
@@ -109,16 +42,16 @@ public class DirectoryPerson {
 	}
 	
 	/**
-	 * @return the uid
+	 * @return the userid
 	 */
-	public String getUid() {
-		return uid;
+	public String getUserid() {
+		return userid;
 	}
 	/**
-	 * @param uid the uid to set
+	 * @param userid the userid to set
 	 */
-	public void setUid(String uid) {
-		this.uid = uid;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	/**
 	 * @return the eduPersonPrincipalName
@@ -157,18 +90,6 @@ public class DirectoryPerson {
 		this.eduPersonPrimaryAffiliation = eduPersonPrimaryAffiliation;
 	}
 	/**
-	 * @return the psMacLabHomeDir
-	 */
-	public String getPsMacLabHomeDir() {
-		return psMacLabHomeDir;
-	}
-	/**
-	 * @param psMacLabHomeDir the psMacLabHomeDir to set
-	 */
-	public void setPsMacLabHomeDir(String psMacLabHomeDir) {
-		this.psMacLabHomeDir = psMacLabHomeDir;
-	}
-	/**
 	 * @return the givenName
 	 */
 	public String getGivenName() {
@@ -205,42 +126,6 @@ public class DirectoryPerson {
 		this.title = title;
 	}
 	/**
-	 * @return the psMemberOf
-	 */
-	public String getPsMemberOf() {
-		return psMemberOf;
-	}
-	/**
-	 * @param psMemberOf the psMemberOf to set
-	 */
-	public void setPsMemberOf(String psMemberOf) {
-		this.psMemberOf = psMemberOf;
-	}
-	/**
-	 * @return the psCampus
-	 */
-	public String getPsCampus() {
-		return psCampus;
-	}
-	/**
-	 * @param psCampus the psCampus to set
-	 */
-	public void setPsCampus(String psCampus) {
-		this.psCampus = psCampus;
-	}
-	/**
-	 * @return the psMacLabGID
-	 */
-	public String getPsMacLabGID() {
-		return psMacLabGID;
-	}
-	/**
-	 * @param psMacLabGID the psMacLabGID to set
-	 */
-	public void setPsMacLabGID(String psMacLabGID) {
-		this.psMacLabGID = psMacLabGID;
-	}
-	/**
 	 * @return the objectclass
 	 */
 	public String getObjectclass() {
@@ -251,18 +136,6 @@ public class DirectoryPerson {
 	 */
 	public void setObjectclass(String objectclass) {
 		this.objectclass = objectclass;
-	}
-	/**
-	 * @return the psmailhost
-	 */
-	public String getPsmailhost() {
-		return psmailhost;
-	}
-	/**
-	 * @param psmailhost the psmailhost to set
-	 */
-	public void setPsmailhost(String psmailhost) {
-		this.psmailhost = psmailhost;
 	}
 	/**
 	 * @return the mail
@@ -289,30 +162,6 @@ public class DirectoryPerson {
 		this.sn = sn;
 	}
 	/**
-	 * @return the psOfficePhone
-	 */
-	public String getPsOfficePhone() {
-		return psOfficePhone;
-	}
-	/**
-	 * @param psOfficePhone the psOfficePhone to set
-	 */
-	public void setPsOfficePhone(String psOfficePhone) {
-		this.psOfficePhone = psOfficePhone;
-	}
-	/**
-	 * @return the psOfficeAddress
-	 */
-	public String getPsOfficeAddress() {
-		return psOfficeAddress;
-	}
-	/**
-	 * @param psOfficeAddress the psOfficeAddress to set
-	 */
-	public void setPsOfficeAddress(String psOfficeAddress) {
-		this.psOfficeAddress = psOfficeAddress;
-	}
-	/**
 	 * @return the uidNumber
 	 */
 	public String getUidNumber() {
@@ -323,30 +172,6 @@ public class DirectoryPerson {
 	 */
 	public void setUidNumber(String uidNumber) {
 		this.uidNumber = uidNumber;
-	}
-	/**
-	 * @return the psmailbox
-	 */
-	public String getPsmailbox() {
-		return psmailbox;
-	}
-	/**
-	 * @param psmailbox the psmailbox to set
-	 */
-	public void setPsmailbox(String psmailbox) {
-		this.psmailbox = psmailbox;
-	}
-	/**
-	 * @return the psUidNumber
-	 */
-	public String getPsUidNumber() {
-		return psUidNumber;
-	}
-	/**
-	 * @param psUidNumber the psUidNumber to set
-	 */
-	public void setPsUidNumber(String psUidNumber) {
-		this.psUidNumber = psUidNumber;
 	}
 	/**
 	 * @return the loginShell
@@ -373,30 +198,6 @@ public class DirectoryPerson {
 		this.homeDirectory = homeDirectory;
 	}
 	/**
-	 * @return the psDepartment
-	 */
-	public String getPsDepartment() {
-		return psDepartment;
-	}
-	/**
-	 * @param psDepartment the psDepartment to set
-	 */
-	public void setPsDepartment(String psDepartment) {
-		this.psDepartment = psDepartment;
-	}
-	/**
-	 * @return the psMailID
-	 */
-	public String getPsMailID() {
-		return psMailID;
-	}
-	/**
-	 * @param psMailID the psMailID to set
-	 */
-	public void setPsMailID(String psMailID) {
-		this.psMailID = psMailID;
-	}
-	/**
 	 * @return the cn
 	 */
 	public String getCn() {
@@ -419,18 +220,6 @@ public class DirectoryPerson {
 	 */
 	public void setTelephoneNumber(String telephoneNumber) {
 		this.telephoneNumber = telephoneNumber;
-	}
-	/**
-	 * @return the psDirIDN
-	 */
-	public String getPsDirIDN() {
-		return psDirIDN;
-	}
-	/**
-	 * @param psDirIDN the psDirIDN to set
-	 */
-	public void setPsDirIDN(String psDirIDN) {
-		this.psDirIDN = psDirIDN;
 	}
 	/**
 	 * @return the gidNumber
@@ -469,54 +258,6 @@ public class DirectoryPerson {
 		this.displayName = displayName;
 	}
 	/**
-	 * @return the psAdminArea
-	 */
-	public String getPsAdminArea() {
-		return psAdminArea;
-	}
-	/**
-	 * @param psAdminArea the psAdminArea to set
-	 */
-	public void setPsAdminArea(String psAdminArea) {
-		this.psAdminArea = psAdminArea;
-	}
-	/**
-	 * @return the psMailbox
-	 */
-	public String getPsMailbox() {
-		return psMailbox;
-	}
-	/**
-	 * @param psMailbox the psMailbox to set
-	 */
-	public void setPsMailbox(String psMailbox) {
-		this.psMailbox = psMailbox;
-	}
-	/**
-	 * @return the psMailHost
-	 */
-	public String getPsMailHost() {
-		return psMailHost;
-	}
-	/**
-	 * @param psMailHost the psMailhost to set
-	 */
-	public void setPsMailHost(String psMailHost) {
-		this.psMailHost = psMailHost;
-	}
-	/**
-	 * @return the psCurriculum
-	 */
-	public String getPsCurriculum() {
-		return psCurriculum;
-	}
-	/**
-	 * @param psCurriculum the psCurriculum to set
-	 */
-	public void setPsCurriculum(String psCurriculum) {
-		this.psCurriculum = psCurriculum;
-	}
-	/**
 	 * @return the labeledURI
 	 */
 	public String getLabeledURI() {
@@ -553,18 +294,6 @@ public class DirectoryPerson {
 		GIDNumber = gIDNumber;
 	}
 	/**
-	 * @return the psUIDNumber
-	 */
-	public String getPsUIDNumber() {
-		return PsUIDNumber;
-	}
-	/**
-	 * @param psUIDNumber the psUIDNumber to set
-	 */
-	public void setPsUIDNumber(String psUIDNumber) {
-		PsUIDNumber = psUIDNumber;
-	}
-	/**
 	 * @return the mobile
 	 */
 	public String getMobile() {
@@ -575,42 +304,6 @@ public class DirectoryPerson {
 	 */
 	public void setMobile(String mobile) {
 		Mobile = mobile;
-	}
-	/**
-	 * @return the psOtherInfo
-	 */
-	public String getPsOtherInfo() {
-		return PsOtherInfo;
-	}
-	/**
-	 * @param psOtherInfo the psOtherInfo to set
-	 */
-	public void setPsOtherInfo(String psOtherInfo) {
-		PsOtherInfo = psOtherInfo;
-	}
-	/**
-	 * @return the psColleges
-	 */
-	public String getPsColleges() {
-		return PsColleges;
-	}
-	/**
-	 * @param psColleges the psColleges to set
-	 */
-	public void setPsColleges(String psColleges) {
-		PsColleges = psColleges;
-	}
-	/**
-	 * @return the psHighSchool
-	 */
-	public String getPsHighSchool() {
-		return PsHighSchool;
-	}
-	/**
-	 * @param psHighSchool the psHighSchool to set
-	 */
-	public void setPsHighSchool(String psHighSchool) {
-		PsHighSchool = psHighSchool;
 	}
 	/**
 	 * @return the pager
@@ -637,78 +330,6 @@ public class DirectoryPerson {
 		return Fax;
 	}
 	/**
-	 * @return the psOfficeLocation
-	 */
-	public String getPsOfficeLocation() {
-		return PsOfficeLocation;
-	}
-	/**
-	 * @param psOfficeLocation the psOfficeLocation to set
-	 */
-	public void setPsOfficeLocation(String psOfficeLocation) {
-		PsOfficeLocation = psOfficeLocation;
-	}
-	/**
-	 * @return the psBirthday
-	 */
-	public String getPsBirthday() {
-		return PsBirthday;
-	}
-	/**
-	 * @param psBirthday the psBirthday to set
-	 */
-	public void setPsBirthday(String psBirthday) {
-		PsBirthday = psBirthday;
-	}
-	/**
-	 * @return the psChatName
-	 */
-	public String getPsChatName() {
-		return PsChatName;
-	}
-	/**
-	 * @param psChatName the psChatName to set
-	 */
-	public void setPsChatName(String psChatName) {
-		PsChatName = psChatName;
-	}
-	/**
-	 * @return the psTeaching
-	 */
-	public String getPsTeaching() {
-		return PsTeaching;
-	}
-	/**
-	 * @param psTeaching the psTeaching to set
-	 */
-	public void setPsTeaching(String psTeaching) {
-		PsTeaching = psTeaching;
-	}
-	/**
-	 * @return the psCountries
-	 */
-	public String getPsCountries() {
-		return PsCountries;
-	}
-	/**
-	 * @param psCountries the psCountries to set
-	 */
-	public void setPsCountries(String psCountries) {
-		PsCountries = psCountries;
-	}
-	/**
-	 * @return the psLanguages
-	 */
-	public String getPsLanguages() {
-		return PsLanguages;
-	}
-	/**
-	 * @param psLanguages the psLanguages to set
-	 */
-	public void setPsLanguages(String psLanguages) {
-		PsLanguages = psLanguages;
-	}
-	/**
 	 * @return the homePhone
 	 */
 	public String getHomePhone() {
@@ -721,18 +342,6 @@ public class DirectoryPerson {
 		HomePhone = homePhone;
 	}
 	/**
-	 * @return the psHours
-	 */
-	public String getPsHours() {
-		return PsHours;
-	}
-	/**
-	 * @param psHours the psHours to set
-	 */
-	public void setPsHours(String psHours) {
-		PsHours = psHours;
-	}
-	/**
 	 * @return the homePostalAddress
 	 */
 	public String getHomePostalAddress() {
@@ -743,29 +352,5 @@ public class DirectoryPerson {
 	 */
 	public void setHomePostalAddress(String homePostalAddress) {
 		HomePostalAddress = homePostalAddress;
-	}
-	/**
-	 * @return the psPermanentPhone
-	 */
-	public String getPsPermanentPhone() {
-		return PsPermanentPhone;
-	}
-	/**
-	 * @param psPermanentPhone the psPermanentPhone to set
-	 */
-	public void setPsPermanentPhone(String psPermanentPhone) {
-		PsPermanentPhone = psPermanentPhone;
-	}
-	/**
-	 * @return the psPermanentAddress
-	 */
-	public String getPsPermanentAddress() {
-		return PsPermanentAddress;
-	}
-	/**
-	 * @param psPermanentAddress the psPermanentAddress to set
-	 */
-	public void setPsPermanentAddress(String psPermanentAddress) {
-		PsPermanentAddress = psPermanentAddress;
 	}
 }

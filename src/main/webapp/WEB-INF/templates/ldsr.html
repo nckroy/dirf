@@ -30,7 +30,7 @@
 	Directory Search
 	</h1>
 	<p>
-	Enter the name or Access Account ID of a person to search for below.
+	Enter the name or User ID of a person to search for below.
 	</p>
 	</div>
 	<div>
@@ -45,18 +45,19 @@
 			<thead>
 				<tr>
 					<th th:if="${not #lists.isEmpty(searchResults)}">Name</th>
-					<th th:if="${not #lists.isEmpty(searchResults)}">Campus</th>
-					<th th:if="${not #lists.isEmpty(searchResults)}">Department</th>
-					<th th:if="${not #lists.isEmpty(searchResults)}">Access Account ID</th>
+					<th th:if="${not #lists.isEmpty(searchResults)}">Office</th>
+					<th th:if="${not #lists.isEmpty(searchResults)}">Title</th>
+					<th th:if="${not #lists.isEmpty(searchResults)}">User ID</th>
 					<th th:if="${not #lists.isEmpty(searchResults)}">E-Mail</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="result : ${searchResults}">
 					<td th:text="${result.displayName}"></td>
-					<td th:text="${result.psCampus}"></td>
-					<td><p th:if="${result.psAdminArea != null and result.psDepartment != null}" th:text="${result.psAdminArea} + ' ' + ${result.psDepartment}"></p></td>
-					<td><a href="ldst" th:href="@{/ldst} + '?uid=' + ${result.uid}"><label th:text="${result.uid}">link</label></a></td>
+					<td th:text="${result.postalAddress}"></td>
+					<td th:text="${result.title}"></td>
+<!--		Note: example of how to do null checking and attribute combination into a single field			<td><p th:if="${result.businessUnit != null and result.department != null}" th:text="${result.businessUnit} + ' ' + ${result.department}"></p></td>-->
+					<td><a href="ldst" th:href="@{/ldst} + '?userid=' + ${result.userid}"><label th:text="${result.userid}">link</label></a></td>
 					<td th:text="${result.mail}"></td>
 				</tr>
 			</tbody>
