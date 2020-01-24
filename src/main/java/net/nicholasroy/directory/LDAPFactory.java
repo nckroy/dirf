@@ -206,7 +206,6 @@ public class LDAPFactory {
 
 		try {
 			// connection is already open, perform an operation
-			// TODO!!!! Un-hard-wire search base! Replace with searchBase
 			SearchOperation search = new SearchOperation(conn);
 			SearchResult sResult = search.execute(
 					new SearchRequest(
