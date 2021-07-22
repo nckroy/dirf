@@ -11,7 +11,7 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <servlet>
-    <servlet-name>whitepages</servlet-name>
+    <servlet-name>dirf</servlet-name>
     <servlet-class>
         org.springframework.web.servlet.DispatcherServlet
     </servlet-class>
@@ -21,12 +21,12 @@
     </init-param>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>net.nicholasroy.whitepages.springconfig</param-value>
+      <param-value>net.nicoleroy.dirf.springconfig</param-value>
     </init-param>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>whitepages</servlet-name>
+    <servlet-name>dirf</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
