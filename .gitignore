@@ -27,6 +27,8 @@ hs_err_pid*
 gradle/
 .gradle/
 *.gradle.swp
+gradlew
+gradlew.bat
 
 # IntelliJ
 out/
