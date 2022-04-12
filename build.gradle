@@ -11,14 +11,12 @@ buildscript {
     }
 
   repositories {
-    maven { url "https://jcenter.bintray.com" }
-    maven { url "https://dl.bintray.com/gradle/gradle-plugins" }
     mavenCentral()
   }
 
   dependencies {
-    classpath 'com.github.ben-manes:gradle-versions-plugin:0.27.0'
-    classpath 'com.bmuschko:gradle-tomcat-plugin:2.5'
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.42.0'
+    classpath 'com.bmuschko:gradle-tomcat-plugin:2.7.0'
   }
 }
 
@@ -26,12 +24,12 @@ plugins {
      id "java"
      id "war"
      id "idea"
-     id "com.bmuschko.tomcat" version "2.5"
-     id "com.github.ben-manes.versions" version "0.27.0"
+     id "com.bmuschko.tomcat" version "2.7.0"
+     id "com.github.ben-manes.versions" version "0.42.0"
 }
 
-sourceCompatibility = 1.8
-version = '0.3.0'
+sourceCompatibility = 17
+version = '0.3.1'
 
 repositories {
 	mavenCentral()
@@ -40,19 +38,19 @@ repositories {
 }
 
 dependencies {
-   def tomcatVersion = '9.0.30'
+   def tomcatVersion = '10.1.0-M14'
     tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
 //            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
-            "org.apache.tomcat.embed:tomcat-embed-logging-juli:9.0.0.M6"
+            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
     tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
         exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'}
-   providedCompile("javax.servlet:javax.servlet-api:3.1.0")
-   implementation("org.springframework:spring-webmvc:5.2.3.RELEASE")
-   implementation("com.fasterxml.jackson.core:jackson-databind:2.10.2")
-   implementation("org.thymeleaf:thymeleaf-spring4:3.0.11.RELEASE")
-   implementation("org.ldaptive:ldaptive:1.2.4")
-    implementation("com.typesafe:config:1.4.0");
-   testImplementation("junit:junit:4.13")
+   providedCompile("javax.servlet:javax.servlet-api:4.0.1")
+   implementation("org.springframework:spring-webmvc:6.0.0-M3")
+   implementation("com.fasterxml.jackson.core:jackson-databind:2.13.2.2")
+   implementation("org.thymeleaf:thymeleaf-spring4:3.0.15.RELEASE")
+   implementation("org.ldaptive:ldaptive:2.1.0")
+    implementation("com.typesafe:config:1.4.2")
+   testImplementation("junit:junit:4.13.2")
 }
 
 tomcat {
@@ -66,5 +64,5 @@ war {
 }
 
 wrapper {
-	gradleVersion = '6.7'
+	gradleVersion = '7.4.2'
 }
