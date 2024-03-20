@@ -1,5 +1,6 @@
 # dirf
 Demo corporate LDAP public directory web app
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 <br /> 
 <br />
 Copyright ©2014-2024 Nicole Roy<br />
