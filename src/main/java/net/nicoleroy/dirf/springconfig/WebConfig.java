@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * @author nckroy
@@ -15,10 +15,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages= "net.nicholasroy.whitepages.controller")
+@ComponentScan(basePackages= "net.nicoleroy.dirf.controller")
 @PropertySources(value = {@PropertySource("classpath:/application.properties")})
 @Import(ThymeleafConfig.class)
-public class WebConfig extends WebMvcConfigurerAdapter {
+public class WebConfig implements WebMvcConfigurer {
 		
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {

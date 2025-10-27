@@ -1,0 +1,140 @@
+# Test LDIF data for unit testing
+# Base DN: dc=example,dc=com
+
+# Sample Employee - John Smith
+dn: userid=jsmith,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: eduPerson
+objectClass: posixAccount
+userid: jsmith
+cn: John Smith
+givenName: John
+sn: Smith
+displayName: Smith, John
+mail: jsmith@example.com
+telephoneNumber: 555-1234
+mobile: 555-5678
+title: Software Engineer
+postalAddress: 123 Main St
+postalAddress: Building 5
+postalAddress: Room 101
+eduPersonPrincipalName: jsmith@example.com
+eduPersonAffiliation: employee
+eduPersonAffiliation: member
+eduPersonPrimaryAffiliation: employee
+uidNumber: 1001
+gidNumber: 100
+homeDirectory: /home/jsmith
+loginShell: /bin/bash
+
+# Sample Student - Bob Williams
+dn: userid=bwilliams,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: eduPerson
+objectClass: posixAccount
+userid: bwilliams
+cn: Bob Williams
+givenName: Bob
+sn: Williams
+displayName: Williams, Bob
+mail: bwilliams@example.com
+telephoneNumber: 555-9999
+eduPersonNickname: Bobby
+eduPersonAffiliation: student
+eduPersonAffiliation: member
+eduPersonPrimaryAffiliation: student
+uidNumber: 1002
+gidNumber: 200
+homeDirectory: /home/bwilliams
+loginShell: /bin/bash
+
+# Sample Faculty - Dr. Alice Doe
+dn: userid=adoe,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: eduPerson
+objectClass: posixAccount
+userid: adoe
+cn: Alice Doe
+givenName: Alice
+sn: Doe
+displayName: Doe, Alice
+mail: adoe@example.com
+telephoneNumber: 555-1111
+title: Professor
+postalAddress: Science Building
+postalAddress: Room 301
+eduPersonPrincipalName: adoe@example.com
+eduPersonAffiliation: faculty
+eduPersonAffiliation: member
+eduPersonPrimaryAffiliation: faculty
+uidNumber: 1003
+gidNumber: 100
+homeDirectory: /home/adoe
+loginShell: /bin/bash
+
+# Sample person with multiple Smiths for search testing - Jane Smith
+dn: userid=jsmith2,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: eduPerson
+userid: jsmith2
+cn: Jane Smith
+givenName: Jane
+sn: Smith
+displayName: Smith, Jane
+mail: jsmith2@example.com
+telephoneNumber: 555-2222
+title: Manager
+eduPersonAffiliation: employee
+eduPersonAffiliation: member
+eduPersonPrimaryAffiliation: employee
+
+# Sample person with multiple Smiths for search testing - James Smith
+dn: userid=jsmith3,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: eduPerson
+userid: jsmith3
+cn: James Smith
+givenName: James
+sn: Smith
+displayName: Smith, James
+mail: jsmith3@example.com
+telephoneNumber: 555-3333
+title: Analyst
+eduPersonAffiliation: employee
+eduPersonAffiliation: member
+eduPersonPrimaryAffiliation: employee
+
+# Sample person with special characters - Seán O'Mullen
+dn: userid=omullen,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: eduPerson
+userid: omullen
+cn: Seán O'Mullen
+givenName: Seán
+sn: O'Mullen
+displayName: O'Mullen, Seán
+mail: omullen@example.com
+telephoneNumber: 555-4444
+eduPersonAffiliation: employee
+eduPersonAffiliation: member
+eduPersonPrimaryAffiliation: employee
+
+# Sample person with multiple phone numbers - Mary Jones
+dn: userid=mjones,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: eduPerson
+userid: mjones
+cn: Mary Jones
+givenName: Mary
+sn: Jones
+displayName: Jones, Mary
+mail: mjones@example.com
+telephoneNumber: 555-1111
+telephoneNumber: 555-2222
+mobile: 555-3333
+homePhone: 555-4444
+facsimileTelephoneNumber: 555-5555
+title: Director
+eduPersonAffiliation: employee
+eduPersonAffiliation: member
+eduPersonPrimaryAffiliation: employee
