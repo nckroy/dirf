@@ -51,7 +51,7 @@ Test reports are generated at `build/reports/tests/test/index.html`.
 ### Package Structure
 
 - **net.nicoleroy.directory** - Core LDAP functionality (directory abstraction layer)
-  - `LDAPFactory` - Main LDAP connection factory using connection pooling (SoftLimitConnectionPool)
+  - `LDAPFactory` - Main LDAP connection factory using ldaptive 2.x ConnectionFactory pattern
   - `LDAPInfo` / `LDAPInfoElement` - Generic LDAP attribute data structures
   - `DirectoryPerson` - Domain model for person objects
   - `LDAPUtils` - Conversion utilities (LDAP to domain objects)
@@ -112,10 +112,11 @@ Templates use `.html` suffix and HTML template mode.
 
 ## Key Implementation Details
 
-### LDAP Connection Management
-- Uses connection pooling via `SoftLimitConnectionPool` for performance
+### LDAP Connection Management (Ldaptive 2.x)
+- Uses `DefaultConnectionFactory` with builder pattern for connection management
+- `SearchOperation` handles connections internally (no manual open/close required)
 - Configuration loaded from `application.conf` using Typesafe Config library
-- Connections must be explicitly closed to return to pool
+- Connection factory built with `ConnectionConfig` for flexible configuration
 
 ### Dynamic Search Filter Generation
 The `LDAPFactory.findEntriesByStringSearch()` method implements sophisticated search logic:
@@ -142,12 +143,13 @@ All tests use JUnit 4.13.2. Run tests with `./gradlew test`.
 
 Key dependencies and their versions:
 - **Spring WebMVC**: 6.0.23
-- **Jackson Databind**: 2.17.2 (updated for security fixes)
-- **Thymeleaf**: 3.1.3.RELEASE with spring6 integration (updated from spring4 for CVE-2023-38286 fix)
-- **Ldaptive**: 1.3.3
+- **Jackson Databind**: 2.17.2 (fixes resource exhaustion vulnerabilities)
+- **Thymeleaf**: 3.1.3.RELEASE with spring6 integration (fixes CVE-2023-38286 - sandbox bypass)
+- **Ldaptive**: 2.3.2 (fixes CVE-2014-3607 - SSL certificate validation vulnerability)
 - **JUnit**: 4.13.2
+
+All known security vulnerabilities have been resolved.
 
 ## Known Issues
 
-1. **Hardcoded TODO Comments** - Exception handling has placeholder printStackTrace() calls
-2. **Ldaptive CVE-2014-3607** - SSL certificate validation vulnerability (CVSS 5.3). Upgrading to ldaptive 2.x requires significant API refactoring and should be addressed in a future update
+1. **Hardcoded TODO Comments** - Exception handling has placeholder printStackTrace() calls that should be replaced with proper logging
