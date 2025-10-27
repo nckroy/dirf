@@ -6,6 +6,8 @@ import net.nicoleroy.directory.LDAPFactory;
 import net.nicoleroy.directory.LDAPInfo;
 import net.nicoleroy.directory.LDAPUtils;
 import org.ldaptive.LdapException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,6 +25,8 @@ import org.springframework.context.annotation.PropertySources;
 @Controller
 @PropertySources(value = {@PropertySource("classpath:/controller.properties")})
 public class LdapSearchController {
+
+	private static final Logger logger = LoggerFactory.getLogger(LdapSearchController.class);
 
 	private LDAPFactory factory = new LDAPFactory();
 
@@ -50,11 +54,9 @@ public class LdapSearchController {
 				ldapInfo=factory.findSingleEntry(sb.toString());
 
 			} catch (LdapException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error("LDAP error while searching for user with userid: {}", userid, e);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error("Unexpected error while searching for user with userid: {}", userid, e);
 			}
 		}
 		model.addAttribute("ldapInfo", ldapInfo.getAttributeInfoElementList());
@@ -68,8 +70,7 @@ public class LdapSearchController {
 			try {
 				searchResult.setSearchResults(LDAPUtils.LDAPInfoListToDirectoryPersonList(factory.findEntriesByStringSearch(searchString)));
 			} catch (LdapException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error("LDAP error while searching for: {}", searchString, e);
 			}
 
 			if(searchResult.getSearchResults().size() == 1)
