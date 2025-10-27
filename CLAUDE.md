@@ -138,8 +138,16 @@ The project includes comprehensive test fixtures and unit tests:
 
 All tests use JUnit 4.13.2. Run tests with `./gradlew test`.
 
+## Dependencies
+
+Key dependencies and their versions:
+- **Spring WebMVC**: 6.0.23
+- **Jackson Databind**: 2.17.2 (updated for security fixes)
+- **Thymeleaf**: 3.1.3.RELEASE with spring6 integration (updated from spring4 for CVE-2023-38286 fix)
+- **Ldaptive**: 1.3.3
+- **JUnit**: 4.13.2
+
 ## Known Issues
 
 1. **Hardcoded TODO Comments** - Exception handling has placeholder printStackTrace() calls
-2. **Deprecated Thymeleaf Version** - Uses thymeleaf-spring4 (for Spring 4) but project uses Spring 6
-3. **Security Vulnerabilities** - GitHub Dependabot has identified 3 moderate vulnerabilities in dependencies that should be addressed
+2. **Ldaptive CVE-2014-3607** - SSL certificate validation vulnerability (CVSS 5.3). Upgrading to ldaptive 2.x requires significant API refactoring and should be addressed in a future update
