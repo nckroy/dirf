@@ -146,10 +146,21 @@ Key dependencies and their versions:
 - **Jackson Databind**: 2.17.2 (fixes resource exhaustion vulnerabilities)
 - **Thymeleaf**: 3.1.3.RELEASE with spring6 integration (fixes CVE-2023-38286 - sandbox bypass)
 - **Ldaptive**: 2.3.2 (fixes CVE-2014-3607 - SSL certificate validation vulnerability)
+- **SLF4J**: 2.0.9 with Logback Classic 1.4.14 for logging
 - **JUnit**: 4.13.2
 
 All known security vulnerabilities have been resolved.
 
+## Logging
+
+The application uses SLF4J with Logback for logging:
+- **LdapSearchController** - Logs LDAP errors and unexpected exceptions with context (userid/search string)
+- **LDAPUtils** - Logs reflection errors during attribute mapping
+  - NoSuchMethodException at DEBUG level (expected for unmapped LDAP attributes)
+  - Other reflection exceptions at ERROR level with attribute context
+
+Configure logging levels via `logback.xml` in the classpath.
+
 ## Known Issues
 
-1. **Hardcoded TODO Comments** - Exception handling has placeholder printStackTrace() calls that should be replaced with proper logging
+None - all technical debt and security vulnerabilities have been resolved.
