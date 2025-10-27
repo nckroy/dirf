@@ -13,7 +13,7 @@ This is a Spring-based corporate LDAP directory web application that provides a 
 ./gradlew build
 ```
 
-Note: There's currently a Gradle/JDK compatibility issue. The project uses Gradle 8.10 with JDK 25, but the Gretty plugin (loaded from GitHub) may be incompatible with this JDK version. The build.gradle specifies Java 17 as sourceCompatibility.
+The project uses Gradle 8.12.1 with Java 17. A `gradle.properties` file is configured to use Java 17, avoiding compatibility issues with the Gretty plugin when running on systems with newer JDK versions.
 
 ### Running the Application
 ```bash
@@ -33,6 +33,13 @@ This starts a Tomcat 10 server on port 8080 at context path `/`. The Gretty plug
 ```
 
 This produces `dirf-0.3.1.war` in the `build/libs/` directory.
+
+### Running Tests
+```bash
+./gradlew test
+```
+
+Test reports are generated at `build/reports/tests/test/index.html`.
 
 ### Checking for Dependency Updates
 ```bash
@@ -77,7 +84,7 @@ The application uses annotation-based Spring configuration with two contexts:
 1. **Root Application Context** - Loaded from `/WEB-INF/applicationContext.xml` by ContextLoaderListener
 2. **Web Application Context** - Loaded from `net.nicoleroy.dirf.springconfig` package by DispatcherServlet
 
-Note: There's a package name inconsistency - WebConfig scans `net.nicholasroy.whitepages.controller` but controllers are in `net.nicoleroy.dirf.controller`.
+The application uses Jakarta EE 10 (web-app 6.0) namespace in web.xml, and Spring WebMVC 6.0.23. Configuration classes implement `WebMvcConfigurer` interface (not the deprecated `WebMvcConfigurerAdapter`).
 
 ### LDAP Search Flow
 
@@ -120,10 +127,19 @@ The `LDAPFactory.findEntriesByStringSearch()` method implements sophisticated se
 ### Reflection-Based Object Mapping
 `LDAPUtils.LDAPInfoListToDirectoryPersonList()` uses reflection to map LDAP attributes to DirectoryPerson setters dynamically, allowing flexible attribute mapping without hardcoded field mappings.
 
+## Testing
+
+The project includes comprehensive test fixtures and unit tests:
+
+- **TestFixtures.java** - Factory methods for creating test data (DirectoryPerson, LDAPInfo objects)
+- **LDAPInfoTest.java** - 11 unit tests for LDAPInfo operations
+- **LDAPUtilsTest.java** - 7 unit tests for utility methods
+- **test-data.ldif** - Sample LDAP entries for integration testing
+
+All tests use JUnit 4.13.2. Run tests with `./gradlew test`.
+
 ## Known Issues
 
-1. **Package Name Mismatch** - WebConfig component scan points to wrong package (net.nicholasroy vs net.nicoleroy, whitepages vs dirf)
-2. **Gradle/JDK Compatibility** - Gretty plugin loaded from GitHub may not support JDK 25
-3. **No Test Suite** - src/test/ directory doesn't exist
-4. **Hardcoded TODO Comments** - Exception handling has placeholder printStackTrace() calls
-5. **Deprecated Thymeleaf Version** - Uses thymeleaf-spring4 (for Spring 4) but project uses Spring 6
+1. **Hardcoded TODO Comments** - Exception handling has placeholder printStackTrace() calls
+2. **Deprecated Thymeleaf Version** - Uses thymeleaf-spring4 (for Spring 4) but project uses Spring 6
+3. **Security Vulnerabilities** - GitHub Dependabot has identified 3 moderate vulnerabilities in dependencies that should be addressed
