@@ -1,6 +1,5 @@
 package net.nicoleroy.directory;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -8,16 +7,14 @@ import java.util.List;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
-import org.ldaptive.Connection;
+import org.ldaptive.ConnectionConfig;
+import org.ldaptive.ConnectionFactory;
 import org.ldaptive.DefaultConnectionFactory;
 import org.ldaptive.LdapAttribute;
 import org.ldaptive.LdapEntry;
 import org.ldaptive.LdapException;
 import org.ldaptive.SearchOperation;
-import org.ldaptive.SearchRequest;
-import org.ldaptive.SearchResult;
-import org.ldaptive.pool.PooledConnectionFactory;
-import org.ldaptive.pool.SoftLimitConnectionPool;
+import org.ldaptive.SearchResponse;
 
 /**
  * @author nckroy
@@ -26,40 +23,35 @@ import org.ldaptive.pool.SoftLimitConnectionPool;
 
 public class LDAPFactory {
 
-	private SoftLimitConnectionPool pool;
-	private PooledConnectionFactory connFactory = null;
+	private ConnectionFactory connFactory;
 	private Config conf = ConfigFactory.load();
 	private String searchBase;
 
 	public LDAPFactory() {
-
 		String directoryURL = conf.getString("directoryURL");
 		searchBase = conf.getString("searchBase");
-		pool = new SoftLimitConnectionPool(new DefaultConnectionFactory(directoryURL));
-		pool.initialize();
-		connFactory = new PooledConnectionFactory(pool);
+
+		// Create connection factory with ldaptive 2.x API
+		connFactory = DefaultConnectionFactory.builder()
+			.config(ConnectionConfig.builder()
+				.url(directoryURL)
+				.build())
+			.build();
 	}
 
 	public LDAPInfo findSingleEntry(String lDAPSearchFilterString) throws LdapException,Exception {
-
 		LDAPInfo result = new LDAPInfo();
 
-		Connection conn = connFactory.getConnection();
+		// In ldaptive 2.x, SearchOperation handles connections internally
+		SearchOperation search = new SearchOperation(connFactory, searchBase);
+		SearchResponse response = search.execute(lDAPSearchFilterString);
 
-		try {
-			// connection is already open, perform an operation
-			SearchOperation search = new SearchOperation(conn);
-			SearchResult sResult = search.execute(new SearchRequest(searchBase, lDAPSearchFilterString)).getResult();
-			if(sResult.size() > 1) {
-				throw new Exception("Search result contains more than one entry.");
-			}
-			else if(sResult.size() == 1) {
-				LdapEntry lde = sResult.getEntry();
-				result = lDAPInfoFromLDAPEntry(lde);
-			}
-		} finally {
-			// closing a connection returns it to the pool
-			conn.close();
+		if(response.entrySize() > 1) {
+			throw new Exception("Search result contains more than one entry.");
+		}
+		else if(response.entrySize() == 1) {
+			LdapEntry lde = response.getEntry();
+			result = lDAPInfoFromLDAPEntry(lde);
 		}
 
 		return result;
@@ -141,7 +133,7 @@ public class LDAPFactory {
 
 		if (name1.contains(" "))
 		{
-			// Build simple search filters    
+			// Build simple search filters
 
 			if ((name2.length() > 0) && (name3.length() > 0) && !wildcards)
 			{
@@ -201,22 +193,14 @@ public class LDAPFactory {
 				filters.add("(givenName=*" + name1 + "*)");
 			}
 		}
-		
-		Connection conn = connFactory.getConnection();
 
-		try {
-			// connection is already open, perform an operation
-			SearchOperation search = new SearchOperation(conn);
-			SearchResult sResult = search.execute(
-					new SearchRequest(
-							searchBase, orFiltersTogether(filters))).getResult();
-			Collection<LdapEntry> entries = sResult.getEntries();
-			for (LdapEntry entry : entries) {
-				results.add(lDAPInfoFromLDAPEntry(entry));
-			}
-		} finally {
-			// closing a connection returns it to the pool
-			conn.close();
+		// In ldaptive 2.x, SearchOperation handles connections internally
+		SearchOperation search = new SearchOperation(connFactory, searchBase);
+		SearchResponse response = search.execute(orFiltersTogether(filters));
+
+		Collection<LdapEntry> entries = response.getEntries();
+		for (LdapEntry entry : entries) {
+			results.add(lDAPInfoFromLDAPEntry(entry));
 		}
 
 		return results;
@@ -241,16 +225,16 @@ public class LDAPFactory {
 
 		return result;
 	}
-	
+
 	private String orFiltersTogether(List<String> filters) {
 		StringBuilder sb = new StringBuilder();
-		
+
 		sb.append("(|");
 		for (String filter : filters) {
 			sb.append(filter);
 		}
 		sb.append(")");
-		
+
 		return sb.toString();
 	}
 }
