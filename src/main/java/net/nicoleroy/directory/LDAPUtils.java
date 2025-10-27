@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author nckroy
  *
  */
 public class LDAPUtils {
+
+	private static final Logger logger = LoggerFactory.getLogger(LDAPUtils.class);
 
 	public static List<DirectoryPerson> LDAPInfoListToDirectoryPersonList(List<LDAPInfo> convertList) {
 		List<DirectoryPerson> results = new ArrayList<DirectoryPerson>();
@@ -31,20 +35,15 @@ public class LDAPUtils {
 					Method setter = dp.getClass().getMethod(eNameBuilder.toString(), params);
 					setter.invoke(dp, getConcatAttrValueString(element.values));
 				} catch (NoSuchMethodException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.debug("No setter method found for LDAP attribute: {}", element.name);
 				} catch (SecurityException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("Security exception accessing setter for attribute: {}", element.name, e);
 				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("Illegal access exception setting attribute: {}", element.name, e);
 				} catch (IllegalArgumentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("Illegal argument exception setting attribute: {}", element.name, e);
 				} catch (InvocationTargetException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("Invocation target exception setting attribute: {}", element.name, e);
 				}
 			}
 			results.add(dp);
